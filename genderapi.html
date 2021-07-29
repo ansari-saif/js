@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image preview</title>
+</head>
+
+<body>
+    <form onsubmit="return getapi()">
+        <input type="text">
+    </form>
+    <button onclick="getapi()">get Result</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script>
+        // api url
+
+        // Defining async function
+        async function getapi() {
+
+            const name = $("input").val();
+            console.log(name);
+            const url = "https://api.genderize.io?name=" + name;
+            // Storing response
+            const response = await fetch(url);
+            // Storing data in form of JSON
+            var data = await response.json();
+            // console.log(data);
+            alert(data.gender);
+            return false;
+        }
+        // Calling that async function
+        // getapi();
+    </script>
+</body>
+
+</html>
